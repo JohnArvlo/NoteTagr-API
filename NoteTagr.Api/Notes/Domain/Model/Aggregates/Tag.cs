@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using EntityFrameworkCore.CreatedUpdatedDate.Contracts;
+using NoteTagr.Api.IAM.Domain.Model.Aggregates;
 using NoteTagr.Api.Notes.Domain.Model.Commands;
 
 namespace NoteTagr.Api.Notes.Domain.Model.Aggregates;
@@ -8,6 +9,8 @@ public class Tag : IEntityWithCreatedUpdatedDate
 {
     
     public int Id { get; set; }
+    public int UserId { get; set; }
+    public User User { get; set; } = null!;
     public string Title { get; set; }
     public string? Description { get; set; }
     
@@ -28,6 +31,7 @@ public class Tag : IEntityWithCreatedUpdatedDate
     {
         Title = command.Title;
         Description = command.Description;
+        UserId = command.UserId;
     }
 
     public void UpdateInformation(string title, string? description)

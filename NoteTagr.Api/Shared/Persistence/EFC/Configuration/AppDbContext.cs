@@ -1,5 +1,6 @@
 ﻿using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
+using NoteTagr.Api.IAM.Domain.Model.Aggregates;
 using NoteTagr.Api.Notes.Domain.Model.Aggregates;
 
 namespace NoteTagr.Api.Shared.Persistence.EFC.Configuration;
@@ -38,6 +39,24 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<Tag>().Property(t => t.Title).IsRequired().HasMaxLength(60);
         builder.Entity<Tag>().Property(t => t.Description);
 
+        // IAM Context
+        
+        builder.Entity<User>().HasKey(u => u.Id);
+        builder.Entity<User>().Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<User>().Property(u => u.Username).IsRequired();
+        builder.Entity<User>().Property(u => u.PasswordHash).IsRequired();
+        
+        // Relación Note - User
+        builder.Entity<Note>()
+            .HasOne(n => n.User)
+            .WithMany(u => u.Notes)
+            .HasForeignKey(n => n.UserId);
+        
+        // Relación Tag - User 
+        builder.Entity<Tag>()
+            .HasOne(t => t.User)
+            .WithMany(u => u.Tags)
+            .HasForeignKey(t => t.UserId);
         
     }
 }

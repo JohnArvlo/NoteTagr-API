@@ -16,4 +16,9 @@ public class NoteQueryService(INoteRepository noteRepository) : INoteQueryServic
     {
         return await noteRepository.ListWithTagsAsync();
     }
+    
+    public async Task<IEnumerable<Note>> Handle(GetAllNotesByUserIdQuery query)
+    {
+        return await noteRepository.ListByUserIdWithTagsAsync(query.UserId);
+    }
 }

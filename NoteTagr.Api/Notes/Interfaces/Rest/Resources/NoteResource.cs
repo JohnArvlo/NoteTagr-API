@@ -2,4 +2,4 @@
 
 namespace NoteTagr.Api.Notes.Interfaces.Rest.Resources;
 
-public record NoteResource(int Id, string Title, string Content, bool Archived, IEnumerable<TagDTO> Tags, DateTimeOffset? CreatedDate, DateTimeOffset? UpdatedDate);
+public record NoteResource(int Id, int UserId, string Title, string Content, bool Archived, IEnumerable<TagDTO> Tags, DateTimeOffset? CreatedDate, DateTimeOffset? UpdatedDate);

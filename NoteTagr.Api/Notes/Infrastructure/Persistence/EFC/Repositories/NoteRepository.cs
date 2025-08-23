@@ -15,11 +15,19 @@ public class NoteRepository(AppDbContext context) : BaseRepository<Note>(context
             .Include(n => n.Tags)
             .FirstOrDefaultAsync(n => n.Id == id);
     }
-
+    
     public async Task<IEnumerable<Note>> ListWithTagsAsync()
     {
         return await Context.Notes
             .Include(n => n.Tags)
+            .ToListAsync();
+    }
+    
+    public async Task<IEnumerable<Note>> ListByUserIdWithTagsAsync(int userId)
+    {
+        return await Context.Notes
+            .Include(n => n.Tags)
+            .Where(n => n.UserId == userId)
             .ToListAsync();
     }
 }

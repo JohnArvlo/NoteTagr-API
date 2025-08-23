@@ -108,3 +108,13 @@ C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\obj\Debug\net9.0\NoteTagr.Api
 C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\obj\Debug\net9.0\NoteTagr.Api.genruntimeconfig.cache
 C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\obj\Debug\net9.0\ref\NoteTagr.Api.dll
 C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\obj\Debug\net9.0\NoteTagr.Api.sourcelink.json
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\BCrypt.Net-Next.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\Microsoft.Bcl.TimeProvider.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

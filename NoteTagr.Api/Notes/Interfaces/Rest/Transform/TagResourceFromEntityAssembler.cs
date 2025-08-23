@@ -9,6 +9,7 @@ public class TagResourceFromEntityAssembler
     {
         return new TagResource(
             entity.Id,
+            entity.UserId,
             entity.Title,
             entity.Description,
             // entity.Notes,

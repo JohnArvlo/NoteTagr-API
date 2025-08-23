@@ -7,4 +7,6 @@ public interface INoteQueryService
 {
     Task<Note?> Handle(GetNoteByIdQuery query);
     Task<IEnumerable<Note>> Handle(GetAllNotesQuery query);
+    Task<IEnumerable<Note>> Handle(GetAllNotesByUserIdQuery query);
+    
 }

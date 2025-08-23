@@ -1,4 +1,6 @@
 ﻿using System.Net.Mime;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NoteTagr.Api.Notes.Domain.Model.Commands;
 using NoteTagr.Api.Notes.Domain.Model.Queries;
@@ -17,8 +19,17 @@ public class TagsController(ITagCommandService tagCommandService,
     ITagQueryService tagQueryService) : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> CreateTag(CreateTagCommand command)
+    [Authorize]
+    public async Task<IActionResult> CreateTag(CreateTagResource resource)
     {
+        
+        var userIdString = User.FindFirst("sub")?.Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userIdString == null) return Unauthorized();
+
+        var userId = int.Parse(userIdString);
+        
+        var command = new CreateTagCommand(resource.Title, resource.Description, userId);
+        
         var tag = await tagCommandService.Handle(command);
         if(tag == null)
             return BadRequest();
@@ -27,6 +38,7 @@ public class TagsController(ITagCommandService tagCommandService,
     }
 
     [HttpDelete("{tagId:int}")]
+    [Authorize]
     public async Task<IActionResult> DeleteTag([FromRoute] int tagId)
     {
         var deleteTagCommand = new DeleteTagByIdCommand(tagId);
@@ -36,6 +48,7 @@ public class TagsController(ITagCommandService tagCommandService,
     }
 
     [HttpGet("{tagId:int}")]
+    [Authorize]
     public async Task<IActionResult> GetTagById([FromRoute] int tagId)
     {
         var tag = await tagQueryService.Handle(new GetTagByIdQuery(tagId));
@@ -45,6 +58,8 @@ public class TagsController(ITagCommandService tagCommandService,
     }
     
     [HttpGet]
+    [Authorize]
+
     public async Task<IActionResult> GetAllTags()
     {
         var getAllTagsQuery = new GetAllTagsQuery();
@@ -52,8 +67,26 @@ public class TagsController(ITagCommandService tagCommandService,
         var tagResources = tags.Select(TagResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(tagResources);
     }
+    
+    [HttpGet("user")]
+    [Authorize]
+    public async Task<IActionResult> GetAllTagsByUserId()
+    {
+        
+        var userIdString = User.FindFirst("sub")?.Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userIdString == null) return Unauthorized();
+
+        var userId = int.Parse(userIdString);
+        
+        var getAllTagsByUserIdQuery = new GetAllTagsByUserIdQuery(userId);
+        var tags = await tagQueryService.Handle(getAllTagsByUserIdQuery);
+        var tagResources = tags.Select(TagResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(tagResources);
+    }
 
     [HttpPut("{tagId:int}")]
+    [Authorize]
+
     public async Task<IActionResult> UpdateTag([FromRoute] int tagId, UpdateTagResource resource)
     {
         var updateTagCommand = new UpdateTagCommand(tagId, resource.Title, resource.Description);

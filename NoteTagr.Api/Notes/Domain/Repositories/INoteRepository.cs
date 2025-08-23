@@ -7,4 +7,5 @@ public interface INoteRepository : IBaseRepository<Note>
 {
     Task<Note?> GetNoteWithTagsAsync(int id);
     Task<IEnumerable<Note>> ListWithTagsAsync();
+    Task<IEnumerable<Note>> ListByUserIdWithTagsAsync(int userId);
 }

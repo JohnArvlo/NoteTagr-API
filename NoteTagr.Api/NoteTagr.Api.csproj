@@ -23,10 +23,19 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.1"/>
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.8.1"/>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4"/>
+
+        <!--related to iam-->
+
+        <!-- BCrypt Encryption related packages -->
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
+        <!-- JSON Web Token related packages -->
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10"/>
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.2.0"/>
+
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="IAM\" />
       <Folder Include="Notes\Domain\Model\Entities\" />
       <Folder Include="Notes\Domain\Model\ValueObjects\" />
     </ItemGroup>

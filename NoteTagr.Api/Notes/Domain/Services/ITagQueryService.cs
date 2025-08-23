@@ -7,4 +7,5 @@ public interface ITagQueryService
 {
     Task<Tag?> Handle(GetTagByIdQuery query);
     Task<IEnumerable<Tag>> Handle(GetAllTagsQuery query);
+    Task<IEnumerable<Tag>> Handle(GetAllTagsByUserIdQuery query);
 }

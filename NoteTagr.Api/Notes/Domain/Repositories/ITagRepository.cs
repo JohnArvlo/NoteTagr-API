@@ -5,5 +5,5 @@ namespace NoteTagr.Api.Notes.Domain.Repositories;
 
 public interface ITagRepository : IBaseRepository<Tag>
 {
-    
+    Task<IEnumerable<Tag>> ListByUserIdAsync(int userId);
 }

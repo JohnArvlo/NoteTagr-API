@@ -16,4 +16,9 @@ public class TagQueryService(ITagRepository tagRepository) : ITagQueryService
     {
         return await tagRepository.ListAsync();
     }
+    
+    public async Task<IEnumerable<Tag>> Handle(GetAllTagsByUserIdQuery query)
+    {
+        return await tagRepository.ListByUserIdAsync(query.UserId);
+    }
 }

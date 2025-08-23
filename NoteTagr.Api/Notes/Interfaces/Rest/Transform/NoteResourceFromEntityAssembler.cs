@@ -11,6 +11,7 @@ public class NoteResourceFromEntityAssembler
             
         return new NoteResource(
             entity.Id,
+            entity.UserId,
             entity.Title, 
             entity.Content, 
             entity.Archived,
