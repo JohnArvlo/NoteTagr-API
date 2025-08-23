@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteTagr.Api", "NoteTagr.Api\NoteTagr.Api.csproj", "{F5132A1E-004D-4DED-8688-7507A466C5CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5132A1E-004D-4DED-8688-7507A466C5CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5132A1E-004D-4DED-8688-7507A466C5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5132A1E-004D-4DED-8688-7507A466C5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5132A1E-004D-4DED-8688-7507A466C5CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
