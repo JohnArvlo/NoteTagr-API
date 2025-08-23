@@ -1,3 +1,5 @@
-﻿namespace NoteTagr.Api.Notes.Interfaces.Rest.Resources;
+﻿using NoteTagr.Api.Notes.Domain.Model.Aggregates;
 
-public record NoteResource(string Title, string Content, bool Archived, DateTimeOffset? CreatedDate, DateTimeOffset? UpdatedDate);
+namespace NoteTagr.Api.Notes.Interfaces.Rest.Resources;
+
+public record NoteResource(int Id, string Title, string Content, bool Archived, ICollection<Tag> Tags, DateTimeOffset? CreatedDate, DateTimeOffset? UpdatedDate);

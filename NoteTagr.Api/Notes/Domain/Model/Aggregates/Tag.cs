@@ -4,29 +4,30 @@ using NoteTagr.Api.Notes.Domain.Model.Commands;
 
 namespace NoteTagr.Api.Notes.Domain.Model.Aggregates;
 
-public class Note : IEntityWithCreatedUpdatedDate
+public class Tag : IEntityWithCreatedUpdatedDate
 {
-    public int Id {get; set;}
-    public string Title {get; set;}
-    public string Content {get; set;}
-    public bool Archived {get; set;}
-
-    public ICollection<Tag> Tags { get; set; } = new List<Tag>();
+    
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string? Description { get; set; }
+    
+    public ICollection<Note> Notes { get; set; } = new List<Note>();
     
     [Column("CreatedAt")] public DateTimeOffset? CreatedDate {get; set;}
     [Column("UpdatedAt")] public DateTimeOffset? UpdatedDate {get; set;}
-    
-    public Note(){}
 
-    public Note(string title, string content)
+    public Tag(){}
+
+    public Tag(string title, string? description)
     {
         Title = title;
-        Content = content;
+        Description = description;
     }
 
-    public Note(CreateNoteCommand command)
+    public Tag(CreateTagCommand command)
     {
         Title = command.Title;
-        Content = command.Content;
+        Description = command.Description;
     }
+    
 }

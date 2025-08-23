@@ -107,3 +107,4 @@ C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\obj\Debug\net9.0\refint\NoteT
 C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\obj\Debug\net9.0\NoteTagr.Api.pdb
 C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\obj\Debug\net9.0\NoteTagr.Api.genruntimeconfig.cache
 C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\obj\Debug\net9.0\ref\NoteTagr.Api.dll
+C:\Users\John4\RiderProjects\NoteTagr\NoteTagr.Api\obj\Debug\net9.0\NoteTagr.Api.sourcelink.json

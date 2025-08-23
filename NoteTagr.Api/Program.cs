@@ -42,6 +42,11 @@ builder.Services.AddScoped<INoteRepository, NoteRepository>();
 builder.Services.AddScoped<INoteCommandService, NoteCommandService>();
 builder.Services.AddScoped<INoteQueryService, NoteQueryService>();
 
+builder.Services.AddScoped<ITagRepository, TagRepository>();
+builder.Services.AddScoped<ITagCommandService, TagCommandService>();
+builder.Services.AddScoped<ITagQueryService, TagQueryService>();
+
+
 
 var app = builder.Build();
 
@@ -50,6 +55,8 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
+    //create and drop
+    context.Database.EnsureDeleted();
     context.Database.EnsureCreated();
 }
 

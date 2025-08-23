@@ -23,5 +23,18 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.Entity<Note>().Property(n => n.Content).IsRequired();
         builder.Entity<Note>().Property(n => n.Archived).IsRequired();
         
+        //relacion entre ambas
+        builder.Entity<Note>()
+            .HasMany(n => n.Tags)
+            .WithMany(t => t.Notes)
+            .UsingEntity(j => j.ToTable("NoteTags")); //nombre tabla intermedia
+        
+        //tags
+        builder.Entity<Tag>().HasKey(t => t.Id);
+        builder.Entity<Tag>().Property(t => t.Id).ValueGeneratedOnAdd();
+        builder.Entity<Tag>().Property(t => t.Title).IsRequired().HasMaxLength(60);
+        builder.Entity<Tag>().Property(t => t.Description);
+
+        
     }
 }

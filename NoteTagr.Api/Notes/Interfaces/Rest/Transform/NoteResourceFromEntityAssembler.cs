@@ -8,9 +8,11 @@ public class NoteResourceFromEntityAssembler
     public static NoteResource ToResourceFromEntity(Note entity)
     {
         return new NoteResource(
+            entity.Id,
             entity.Title, 
             entity.Content, 
-            entity.Archived, 
+            entity.Archived,
+            entity.Tags,
             entity.CreatedDate, 
             entity.UpdatedDate);
     }
