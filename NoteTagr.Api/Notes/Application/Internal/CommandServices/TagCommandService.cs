@@ -25,4 +25,14 @@ public class TagCommandService(ITagRepository tagRepository, IUnitOfWork unitOfW
         await unitOfWork.CompleteAsync();
         return true;
     }
+
+    public async Task<Tag?> Handle(UpdateTagCommand command)
+    {
+        var tag = await tagRepository.FindByIdAsync(command.TagId);
+        if(tag == null)
+            return null;
+        tag.UpdateInformation(command.Title, command.Description);
+        await unitOfWork.CompleteAsync();
+        return tag;
+    }
 }

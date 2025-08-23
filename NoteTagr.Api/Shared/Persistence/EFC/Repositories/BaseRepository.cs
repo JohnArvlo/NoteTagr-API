@@ -37,4 +37,11 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
     {
         return await Context.Set<TEntity>().ToListAsync();
     }
+    
+    public async Task<IEnumerable<TEntity>> ListByIdsAsync(IEnumerable<int> ids)
+    {
+        return await Context.Set<TEntity>()
+            .Where(e => ids.Contains(EF.Property<int>(e, "Id")))
+            .ToListAsync();
+    }
 }

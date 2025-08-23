@@ -29,4 +29,11 @@ public class Note : IEntityWithCreatedUpdatedDate
         Title = command.Title;
         Content = command.Content;
     }
+
+    public void UpdateInformation(string title, string content, bool archived)
+    {
+        Title = title;
+        Content = content;
+        Archived = archived;
+    }
 }

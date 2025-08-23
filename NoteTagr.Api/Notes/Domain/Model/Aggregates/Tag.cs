@@ -29,5 +29,10 @@ public class Tag : IEntityWithCreatedUpdatedDate
         Title = command.Title;
         Description = command.Description;
     }
-    
+
+    public void UpdateInformation(string title, string? description)
+    {
+        Title = title;
+        Description = description;
+    }
 }

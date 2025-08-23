@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using NoteTagr.Api.Notes.Domain.Model.Commands;
 using NoteTagr.Api.Notes.Domain.Model.Queries;
 using NoteTagr.Api.Notes.Domain.Services;
+using NoteTagr.Api.Notes.Interfaces.Rest.Resources;
 using NoteTagr.Api.Notes.Interfaces.Rest.Transform;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -54,5 +55,35 @@ public class NotesController(INoteCommandService noteCommandService,
         var noteResources = notes.Select(NoteResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(noteResources);
     }
+
+    [HttpPut("{noteId:int}")]
+    public async Task<IActionResult> UpdateNote([FromRoute] int noteId, UpdateNoteResource resource)
+    {
+        var updateNoteCommand = new UpdateNoteCommand(noteId, resource.Title, resource.Content, resource.Archived);
+        var note = await noteCommandService.Handle(updateNoteCommand);
+        if(note == null) return NotFound();
+        var noteResource = NoteResourceFromEntityAssembler.ToResourceFromEntity(note);
+        return Ok(noteResource);
+    }
     
+    //add tags
+    [HttpPatch("{noteId:int}/{tagId:int}")]
+    public async Task<IActionResult> addTagsToNote([FromRoute] int noteId, [FromRoute] int tagId)
+    {
+        var note = await noteCommandService.Handle(noteId, tagId);
+        if(note == null) return NotFound();
+        var noteResource = NoteResourceFromEntityAssembler.ToResourceFromEntity(note);
+        return Ok(noteResource);
+    }
+    
+    //remove tags
+    [HttpDelete("{noteId:int}/{tagId:int}")]
+    public async Task<IActionResult> deleteTagsFromNote([FromRoute] int noteId, [FromRoute] int tagId)
+    {
+        var command = new DeleteTagFromNoteCommand(noteId, tagId);
+        var note = await noteCommandService.Handle(command);
+        if(note == null) return NotFound();
+        var noteResource = NoteResourceFromEntityAssembler.ToResourceFromEntity(note);
+        return Ok(noteResource);
+    }
 }

@@ -5,5 +5,6 @@ namespace NoteTagr.Api.Notes.Domain.Repositories;
 
 public interface INoteRepository : IBaseRepository<Note>
 {
-    
+    Task<Note?> GetNoteWithTagsAsync(int id);
+    Task<IEnumerable<Note>> ListWithTagsAsync();
 }

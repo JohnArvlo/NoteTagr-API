@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NoteTagr.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+488387c6fc8244efe80306f7a834a49d69bbe65f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e13efb6c680b024cbc31512282006ef124fb779")]
 [assembly: System.Reflection.AssemblyProductAttribute("NoteTagr.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NoteTagr.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

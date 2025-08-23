@@ -6,6 +6,9 @@ namespace NoteTagr.Api.Shared.Persistence.EFC.Configuration;
 
 public class AppDbContext(DbContextOptions options) : DbContext(options)
 {
+    
+    public DbSet<Note> Notes { get; set; }
+    public DbSet<Tag> Tags { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
         builder.AddCreatedUpdatedInterceptor();

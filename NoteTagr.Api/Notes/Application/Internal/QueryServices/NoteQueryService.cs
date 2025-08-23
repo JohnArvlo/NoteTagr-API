@@ -9,11 +9,11 @@ public class NoteQueryService(INoteRepository noteRepository) : INoteQueryServic
 {
     public async Task<Note?> Handle(GetNoteByIdQuery query)
     {
-        return await noteRepository.FindByIdAsync(query.NoteId);
-    }
+        return await noteRepository.GetNoteWithTagsAsync(query.NoteId);
+    } 
 
     public async Task<IEnumerable<Note>> Handle(GetAllNotesQuery query)
     {
-        return await noteRepository.ListAsync();
+        return await noteRepository.ListWithTagsAsync();
     }
 }

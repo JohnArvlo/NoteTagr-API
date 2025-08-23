@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NoteTagr.Api.Notes.Domain.Model.Commands;
 using NoteTagr.Api.Notes.Domain.Model.Queries;
 using NoteTagr.Api.Notes.Domain.Services;
+using NoteTagr.Api.Notes.Interfaces.Rest.Resources;
 using NoteTagr.Api.Notes.Interfaces.Rest.Transform;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -51,4 +52,15 @@ public class TagsController(ITagCommandService tagCommandService,
         var tagResources = tags.Select(TagResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(tagResources);
     }
+
+    [HttpPut("{tagId:int}")]
+    public async Task<IActionResult> UpdateTag([FromRoute] int tagId, UpdateTagResource resource)
+    {
+        var updateTagCommand = new UpdateTagCommand(tagId, resource.Title, resource.Description);
+        var tag = await tagCommandService.Handle(updateTagCommand);
+        if (tag == null) return NotFound();
+        var tagResource = TagResourceFromEntityAssembler.ToResourceFromEntity(tag);
+        return Ok(tagResource);
+    }
+    
 }

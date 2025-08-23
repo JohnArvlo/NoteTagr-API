@@ -7,4 +7,5 @@ public interface ITagCommandService
 {
     Task<Tag?> Handle(CreateTagCommand command);
     Task<bool> Handle(DeleteTagByIdCommand command);
+    Task<Tag?> Handle(UpdateTagCommand command);
 }

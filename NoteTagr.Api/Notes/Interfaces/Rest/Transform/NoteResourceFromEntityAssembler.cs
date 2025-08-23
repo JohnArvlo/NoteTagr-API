@@ -7,12 +7,14 @@ public class NoteResourceFromEntityAssembler
 {
     public static NoteResource ToResourceFromEntity(Note entity)
     {
+        var tags = entity.Tags.Select(TagDTOFromEntityAssembler.ToResourceFromEntity);
+            
         return new NoteResource(
             entity.Id,
             entity.Title, 
             entity.Content, 
             entity.Archived,
-            entity.Tags,
+            tags,
             entity.CreatedDate, 
             entity.UpdatedDate);
     }

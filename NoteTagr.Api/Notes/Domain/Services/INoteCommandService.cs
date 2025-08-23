@@ -7,4 +7,11 @@ public interface INoteCommandService
 {
     Task<Note?> Handle(CreateNoteCommand command);
     Task<bool> Handle(DeleteNoteByIdCommand command);
+    Task<Note?> Handle(UpdateNoteCommand command);
+    
+    // Task <Note?> Handle(AddTagsToNoteCommand command);
+    Task <Note?> Handle(int noteId, int tagId);
+    
+    //delete tag 
+    Task<Note?> Handle(DeleteTagFromNoteCommand command);
 }
